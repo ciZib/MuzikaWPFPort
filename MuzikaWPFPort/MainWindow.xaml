@@ -1,0 +1,90 @@
+﻿<Window x:Class="MuzikaWPFPort.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuzikaWPFPort"
+        mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"  Background="#FF070B11" 
+        Title="Medija Plejer" Height="650" Width="1200" WindowStyle="None" SizeChanged="Window_SizeChanged" ResizeMode="NoResize" Loaded="Window_Loaded" Icon="{DynamicResource Muzikica}">
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+
+        <Canvas x:Name="kanvas" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="40" Grid.ColumnSpan="5" MinWidth="1070" Width="auto" Background="Black" MouseDown="Kanvas_MouseDown" MouseUp="Kanvas_MouseUp" MouseMove="Kanvas_MouseMove" MouseLeave="Kanvas_MouseLeave"/>
+        <StackPanel x:Name="glavniMeni" Orientation="Vertical" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="2" Grid.Row="1"  Width="auto" Height="auto" Background="#FF070B11" MinHeight="600" MinWidth="250" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Image x:Name="Kucica" Height="100" Width="auto" Source="{DynamicResource Kucica}" MouseDown="Kucica_MouseDown"/>
+            <Button x:Name="medijaDugme" Height="100" Content="Medija" Foreground="White" HorizontalContentAlignment="Left" Padding="10,0,0,0" Background="#FF070B11" Click="MedijaDugme_Click"  />
+
+            <Canvas x:Name="medijaPanel" Height="140" d:IsHidden="True" Visibility="Collapsed">
+                <Button x:Name="dodajPesmeDugme" Height="30" Width="250" Content="Dodaj pesme" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="DodajPesmeDugme_Click"  />
+                <Button x:Name="obrisiPesmeDugme" Height="30" Width="250" Content="Obrisi izabranu pesmu" Margin="0,30,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="ObrisiPesmeDugme_Click"  />
+                <Button x:Name="shuffleDugme" Height="30" Width="250" Content="Shuffle" Margin="0,60,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="ShuffleDugme_Click"  />
+                <Button x:Name="loopDugme" Height="30" Width="250" Content="Loop" Margin="0,90,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="LoopDugme_Click"  />
+            </Canvas>
+
+            <Button x:Name="plejlistaDugme" Height="100" Content="Pesma" Foreground="White" HorizontalContentAlignment="Left" Padding="10,0,0,0" Background="#FF070B11" Click="PlejlistaDugme_Click"  />
+
+            <Canvas x:Name="plejlistaPanel" Height="140" d:IsHidden="True" Visibility="Collapsed">
+                <Button x:Name="brzinaReprodukcijeDugme" Height="30" Width="250" Content="Brzina reprodukcije - x1.0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="BrzinaReprodukcijeDugme_Click"  />
+                <Button x:Name="obrisiSvePesme" Height="30" Width="250" Content="Obrisi sve pesme" Margin="0,30,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="ObrisiSvePesme_Click"  />
+                <Button x:Name="pretraziNaNetu" Height="30" Width="250" Content="Pretrazi pesmu na internetu" Margin="0,60,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="PretraziNaNetu_Click"  />
+                <!--<Button x:Name="button6" Height="30" Width="250" Content="button6" Margin="0,90,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19"  />-->
+            </Canvas>
+
+            <Button x:Name="dodatneInformacijeDugme" Height="100" Content="Opis/Dodatne informacije" Foreground="White" HorizontalContentAlignment="Left" Padding="10,0,0,0" Background="#FF070B11" Click="DodatneInformacijeDugme_Click"   />
+
+            <Canvas x:Name="dodatneInformacijePanel" Height="140" d:IsHidden="True" Visibility="Collapsed">
+                <Button x:Name="developerDugme" Height="30" Width="250" Content="Opis" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19" Click="DeveloperDugme_Click"  />
+                <!--<Button x:Name="button8" Height="30" Width="250" Content="button4" Margin="0,30,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19"  />
+                <Button x:Name="button9" Height="30" Width="250" Content="button5" Margin="0,60,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19"  />
+                <Button x:Name="button10" Height="30" Width="250" Content="button6" Margin="0,90,0,0" Foreground="White" HorizontalContentAlignment="Left" Padding="25,0,0,0" Background="#FF140F19"  />-->
+            </Canvas>
+
+        </StackPanel>
+
+        <DockPanel x:Name="kontrolniMeni" HorizontalAlignment="Right" Grid.Column="2"  Grid.ColumnSpan="7" Height="40" MinHeight="40" Grid.Row="0" Grid.RowSpan="2" Background="Black">
+            <Button x:Name="minimizirajDugme" Height="40" Width="50"  Foreground="White"  Content="🗕" Style="{DynamicResource ButtonStyle2}" FontFamily="Segoe UI Light" Click="MinimizirajDugme_Click"/>
+            <Button x:Name="fullScreenDugme" HorizontalAlignment="Right" Height="40" Width="50"  Foreground="White"  Content="🗖" Style="{DynamicResource ButtonStyle2}" FontFamily="Segoe UI Light" Click="FullScreenDugme_Click"/>
+            <Button x:Name="zatvoriDugme" Background="Black" Height="40" Width="50" Content="✕" Foreground="White" Margin="0,0,10,0" Style="{DynamicResource ButtonStyle1}" Click="ZatvoriDugme_Click"/>
+
+
+        </DockPanel>
+
+        <ListBox x:Name="lbxListaPesama" Grid.Column="3" Grid.Row="2" Background="Black" Margin="10,20,0,0" MinHeight="460" Height="auto" MinWidth="930" Width="auto" Foreground="White"/>
+        <Button x:Name="dugmePusti" Content="►" Grid.Column="3" Foreground="White"  Grid.Row="6" VerticalAlignment="Top" Width="60" MinWidth="60" MinHeight="40" Height="40" Style="{DynamicResource ButtonStyle2}" Margin="400,19,480,0" FontFamily="Microsoft Sans Serif" Click="DugmePusti_Click"/>
+        <Button x:Name="dugmePrethodno" Content="◄◄" Grid.Column="3" Foreground="White"  Grid.Row="6" VerticalAlignment="Top" Width="60" MinWidth="60" MinHeight="40" Height="40" Style="{DynamicResource ButtonStyle2}" Margin="330,19,550,0" FontFamily="Microsoft Sans Serif" Click="DugmePrethodno_Click"/>
+        <Button x:Name="dugmePauza" Content="||" Grid.Column="3" Foreground="White"  Grid.Row="6" VerticalAlignment="Top" Width="60" MinWidth="60" MinHeight="40" Height="40" Style="{DynamicResource ButtonStyle2}" Margin="470,19,410,0" FontFamily="Microsoft Sans Serif" Click="DugmePauza_Click"/>
+        <Button x:Name="dugmeSledece" Content="►►" Grid.Column="3" Foreground="White"  Grid.Row="6" VerticalAlignment="Top" Width="60" MinWidth="60" MinHeight="40" Height="40" Style="{DynamicResource ButtonStyle2}" Margin="540,18,340,0" FontFamily="Microsoft Sans Serif" Click="DugmeSledece_Click"/>
+        <TextBlock Text="Premotaj" Foreground="White" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="6" Margin="20,15,0,10" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+        <TextBlock Text="Jacina zvuka" FontSize="15" Foreground="White" Grid.Column="3" Grid.Row="6" Margin="0,15,260,10" Grid.RowSpan="2" HorizontalAlignment="Right"/>
+        <Slider x:Name="premotajSlider" Grid.Column="3" Margin="110,19,0,0" Grid.Row="6" VerticalAlignment="Top" Height="45" HorizontalAlignment="Left" Width="190" Background="#FF070B11" ValueChanged="PremotajSlider_ValueChanged"/>
+        <Slider x:Name="jacinaZvukaSlider" Grid.Column="3" Margin="0,19,50,0" Grid.Row="6" VerticalAlignment="Top" Height="45" Background="#FF070B11" HorizontalAlignment="Right" Width="190" ValueChanged="JacinaZvukaSlider_ValueChanged"/>
+        <TextBlock x:Name="lblStatus" Text="00:00" Foreground="White" Grid.Column="3" Grid.Row="6" Margin="20,45,0,-20" Grid.RowSpan="2" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBlock x:Name="jacinaVrednost" Text="0" Visibility="Hidden" FontSize="15" Foreground="White" Grid.Column="3" Grid.Row="6" Margin="0,37,258,-12" Grid.RowSpan="2" HorizontalAlignment="Right"/>
+
+
+
+    </Grid>
+</Window>
